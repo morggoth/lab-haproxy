@@ -15,3 +15,8 @@ Then go to <http://localhost:8080> to get access to the Lab's endpoint.
 ## Statistics
 
 <http://localhost:8080/haproxy?stats> - page with HAProxy statistics.
+
+Credentials:
+
+- user: admin
+- pass: admin
