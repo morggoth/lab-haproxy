@@ -2,7 +2,11 @@ version: "3.8"
 services:
   app1:
     build: app/
+  app11:
+    build: app/
   app2:
+    build: app/
+  app22:
     build: app/
   lb:
     build: haproxy/
