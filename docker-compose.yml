@@ -1,14 +1,14 @@
 version: "3.8"
 services:
-  app1:
+  default-app:
     build: app/
-  app11:
-    build: app/
-  app2:
-    build: app/
-  app22:
-    build: app/
-  lb:
+    image: simple-web-app
+  ssl-termination-1:
+    image: simple-web-app
+  ssl-termination-2:
+    image: simple-web-app
+  lb-haproxy:
     build: haproxy/
     ports:
       - "8080:80"
+      - "8443:443"
