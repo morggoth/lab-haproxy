@@ -20,3 +20,25 @@ Credentials:
 
 - user: admin
 - pass: admin
+
+## SSL
+
+How to create self-signed certificate:
+
+```bash
+DOMAINE="domain.name"
+mkdir /etc/ssl/${DOMAIN}
+openssl genrsa -out /etc/ssl/${DOMAIN}/${DOMAIN}.key 1024
+openssl req -new -key /etc/ssl/${DOMAIN}/${DOMAIN}.key \
+    -out /etc/ssl/${DOMAIN}/${DOMAIN}.csr
+openssl x509 -req -days 365 -in /etc/ssl/${DOMAIN}/${DOMAIN}.csr \
+    -signkey /etc/ssl/${DOMAIN}/${DOMAIN}.key \
+    -out /etc/ssl/${DOMAIN}/${DOMAIN}.crt
+
+cat /etc/ssl/${DOMAIN}/${DOMAIN}.crt /etc/ssl/${DOMAIN}/${DOMAIN}.key \
+    | tee /etc/ssl/${DOMAIN}/${DOMAIN}.pem
+```
+
+<https://localhost:8443/termination> - App instances configured with SSL termination on HAProxy.
+
+NB: don't forget flag _-k_ for _curl_ to avoid error with self-signed certificate
