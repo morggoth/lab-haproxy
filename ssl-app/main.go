@@ -9,7 +9,7 @@ import (
 
 func main() {
 	http.HandleFunc("/", handler)
-	log.Fatal(http.ListenAndServe(":8000", nil))
+	log.Fatal(http.ListenAndServeTLS(":8000", "/etc/ssl/localhost/localhost.pem", "/etc/ssl/localhost/localhost.key", nil))
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
@@ -17,5 +17,5 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Fprintf(w, "Hello from %s\n", hostname)
+	fmt.Fprintf(w, "Hello from %s with TLS\n", hostname)
 }
