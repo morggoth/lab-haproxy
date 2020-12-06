@@ -40,5 +40,6 @@ cat /etc/ssl/${DOMAIN}/${DOMAIN}.crt /etc/ssl/${DOMAIN}/${DOMAIN}.key \
 ```
 
 <https://localhost:8443/termination> - App instances configured with SSL termination on HAProxy.
+<https://localhost:8444> - App instances configured with SSL pass-through.
 
 NB: don't forget flag _-k_ for _curl_ to avoid error with self-signed certificate
