@@ -12,7 +12,6 @@ RUN apk update && \
     cat /etc/ssl/${DOMAIN}/${DOMAIN}.crt /etc/ssl/${DOMAIN}/${DOMAIN}.key \
         > /etc/ssl/${DOMAIN}/${DOMAIN}.pem
 
-
 FROM golang:alpine as go-builder
 RUN mkdir /app
 ADD . /app/
